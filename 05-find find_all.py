@@ -25,5 +25,7 @@ soup = BeautifulSoup(html_doc, 'lxml')
 # a_tag = soup.find('a')
 # 找所有符合条件的标签，返回的数据类型是list
 a_tag = soup.find_all('a')
-print(a_tag.string)
+print(a_tag[1].string)
+#a_tag.string?为什么会报错,a_tag[1].string可以，获取的是泛指！！！
+
 
