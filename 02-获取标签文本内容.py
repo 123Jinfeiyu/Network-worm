@@ -35,7 +35,7 @@ string,因为文本数量>=2 时，string不知道获取哪一个
 html = soup.html
 # result = html.text
 # result = html.strings  # 获取多个
-result = html.stripped_strings  # 获取多个
+result = html.stripped_strings  # 获取多个,去掉了换行符
 print(list(result))
 # for i in result:
 #     print(i)
