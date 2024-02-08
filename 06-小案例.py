@@ -92,7 +92,7 @@ soup = BeautifulSoup(html, 'lxml')
 #     print('-'*100)
 
 # 2. 是直接找标签 div  find_all('div') class="even"
-# trs = soup.find_all('tr', class='even')  # 类的定义: class
+# trs = soup.find_all('tr', class='even')  # 类的定义: class,class_避免歧义
 # trs = soup.find_all('tr', attrs={'class': 'even'})  # 类的定义: class
 # for tr in trs:
 #     print(tr)
