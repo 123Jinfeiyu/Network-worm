@@ -29,7 +29,7 @@ soup = BeautifulSoup(html_doc, 'lxml')
 # id="link1" 标签#link1
 # print(soup.select('a#link2'))  #
 
-# 获取文本信息, 列表.string
+# 获取文本信息, 列表.string这是不可行的，用索引取的是标签
 # print(soup.select('a#link2')[0].string)
 # print(soup.select('a#link2')[0].text)
 
