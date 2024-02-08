@@ -36,5 +36,4 @@ soup = BeautifulSoup(html_doc, 'lxml')
 # 其他
 # print(soup.select('p a'))  # 选择所有位于p元素内部的<a>标签,无论嵌套层数，都是可以获取到
 # print(soup.select('p>a'))  # 选择所有作为p标签直接子元素的a标签
-print(soup.select('p+a'))  # 选择所有紧接着<p>元素之后的<a>标签
-
+print(soup.select('p+a'))  # 选择所有紧接着<p>元素之后的<a>标签,紧接就是挨着
