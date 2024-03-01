@@ -1,12 +1,20 @@
-trs = input("请输入你翻译的内容：")
-'''
-trs[0]: 取的是第一个值,进行编码，求长度
-如果长度为1：输入英文，英译汉
-如果长度为3：输入中文，汉译英
-'''
-length = len(trs[0].encode('utf-8'))
-if length == 3:
-    eng = 0
-else:
-    eng = 1
-print(length)
+# lst = ['任务1', '任务2', '任务3']
+# print(*lst)
+
+# def demo(*args):
+#     print(args)
+#
+#
+# demo(1, 2, 3, 5, 6, 6)
+
+
+lst = [1, 2, 3]
+
+
+lst1 = ['1', '2', '3']
+
+lst12 = ['a', 'b', 'c']
+
+lst1.extend(lst)
+lst1.extend(lst12)
+print(lst1)
