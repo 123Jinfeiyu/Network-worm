@@ -19,21 +19,27 @@ headers={
     "sec-ch-ua-mobile": "?0",
     "sec-ch-ua-platform": "\"Windows\""
 }
-
+unicode_str = u'这是一个Unicode字符串'
+#注意如果当前环境的默认编码不支持 Unicode 字符的情况下，會失效
+byte_str = unicode_str.encode('utf-8')
+print(byte_str)
 rep=requests.get(url, headers=headers)
-print(rep.text.encode('utf-8'))
+data = rep.json()
+print(data)
+#這裏的decode可以不做瀏覽器默認已經用utf-8解碼
+print(json.dumps(data, ensure_ascii=False).encode('utf-8').decode('utf-8'))
 #json構造
 json_dict=json.dumps(rep.text, ensure_ascii=False)
-print(json_dict)
-print(type(json_dict))
+# print(json_dict)
+# print(type(json_dict))
 # 将Unicode字符串转换为UTF-8编码的字节字符串
 json_bytes_utf8 = json.dumps(json_dict, ensure_ascii=False).encode('utf-8')
 
 # 将Unicode字符串转换为GBK编码的字节字符串
 json_bytes_gbk = json.dumps(json_dict, ensure_ascii=False).encode('gbk')
 
-print(json_bytes_utf8)
-print(json_bytes_gbk)
+# print(json_bytes_utf8)
+# print(json_bytes_gbk)
 # 請求后包含中文二进制形式的字符串
 binary_str = '{"count": 20, "show_rating_filter": true, "recommend_categories": [{"is_control": true, "type": "\u7c7b\u578b", "data": [{"default": true, "text": "\u5168\u90e8\u7c7b\u578b"}, {"default": false, "text": "\u559c\u5267"}, {"default": false, "text": "\u7231\u60c5"}, {"default": false, "text": "\u52a8\u4f5c"}, {"default": false, "text": "\u79d1\u5e7b"}, {"default": false, "text": "\u52a8\u753b"}, {"default": false, "text": "\u60ac\u7591"}, {"default": false, "text": "\u72af\u7f6a"}, {"default": false, "text": "\u60ca\u609a"}, {"default": false, "text": "\u5192\u9669"}, {"default": false, "text": "\u97f3\u4e50"}, {"default": false, "text": "\u5386\u53f2"}, {"default": false, "text": "\u5947\u5e7b"}, {"default": false, "text": "\u6050\u6016"}, {"default": false, "text": "\u6218\u4e89"}, {"default": false, "text": "\u4f20\u8bb0"}, {"default": false, "text": "\u6b4c\u821e"}, {"default": false, "text": "\u6b66\u4fa0"}, {"default": false, "text": "\u60c5\u8272"}, {"default": false, "text": "\u707e\u96be"}, {"default": false, "text": "\u897f\u90e8"}, {"default": false, "text": "\u7eaa\u5f55\u7247"}, {"default": false, "text": "\u77ed\u7247"}]}, {"is_control": true, "type": "\u5730\u533a", "data": [{"default": true, "text": "\u5168\u90e8\u5730\u533a"}, {"default": false, "text": "\u534e\u8bed"}, {"default": false, "text": "\u6b27\u7f8e"}, {"default": false, "text": "\u97e9\u56fd"}, {"default": false, "text": "\u65e5\u672c"}, {"default": false, "text": "\u4e2d\u56fd\u5927\u9646"}, {"default": false, "text": "\u7f8e\u56fd"}, {"default": false, "text": "\u4e2d\u56fd\u9999\u6e2f"}, {"default": false, "text": "\u4e2d\u56fd\u53f0\u6e7e"}, {"default": false, "text": "\u82f1\u56fd"}, {"default": false, "text": "\u6cd5\u56fd"}]}'
 
@@ -41,7 +47,7 @@ binary_str = '{"count": 20, "show_rating_filter": true, "recommend_categories": 
 decoded_str = binary_str.decode('utf-8')
 
 # 输出解码后的中文字符串
-print(decoded_str)
+# print(decoded_str)
 # 在Python 2中，Unicode字符串和字节字符串是两种不同的数据类型，有以下区别：
 #
 # Unicode字符串（Unicode）：
