@@ -1,20 +1,21 @@
-import threading
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
-# 使用RLock
-lock = threading.RLock()
+def open_browser_with_options(url, browser):
+    options = Options()
+    options.add_experimental_option("detach", True)
 
-def recursive_function(count):
-    if count > 0:
-        with lock:  # with代码执行完。锁就释放了
-            print(f"获取锁，当前计数：{count}")
-            recursive_function(count - 1)
-    print(f"释放锁，当前计数：{count}")  # 这行代码在退出with语句块时隐式发生
+    if browser == "chrome":
+        driver = webdriver.Chrome(options=options)
+        driver.maximize_window()
+    else:
+        raise ValueError("Browser type not supported")
 
-# 尝试使用Lock，看看会发生什么
-# lock = threading.Lock()
+    driver.get(url)
 
-def main():
-    recursive_function(5)
+# Variables
+url = "https://www.zhipin.com/web/geek/job-recommend?ka=header-job-recommend"
+browser_type = "chrome"
 
-if __name__ == "__main__":
-    main()
+# Test case
+open_browser_with_options(url, browser_type)
